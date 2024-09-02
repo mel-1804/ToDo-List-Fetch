@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 export function ToDoList() {
 
     const [valorActividad, setValorActividad] = useState({ label: "", is_done: false });
@@ -9,7 +9,6 @@ export function ToDoList() {
     const handlerEnter = (e) => {
         console.log(data.name)
         if (e.keyCode === 13) {
-
             let url = `https://playground.4geeks.com/todo/todos/${data.name}`;
             let options = {
                 method: 'POST',
@@ -31,11 +30,9 @@ export function ToDoList() {
                     getUserTodos()
                 })
                 .catch((error) => console.log(error));
-
             setValorActividad({ label: "", is_done: false })
         }
     }
-
 
     const handlerClick = (tarea) => {
         let url = `https://playground.4geeks.com/todo/todos/${tarea.id}`;
@@ -52,10 +49,8 @@ export function ToDoList() {
             getUserTodos()
             })
             .catch((error) => console.log(error));
-
         setValorActividad({ label: "", is_done: false })
     }
-
 
     const getUserTodos = () => {
         fetch(`https://playground.4geeks.com/todo/users/${data.name}`)
@@ -75,10 +70,6 @@ export function ToDoList() {
             .catch((error) => console.log(error));
     }
 
-
-
-
-
     return (
         <div className="fondo d-flex justify-content-center">
             <div className="papel rounded-4 border border-4 p-4">
@@ -91,8 +82,7 @@ export function ToDoList() {
                         aria-describedby="basic-addon1"
                         value={data.name}
                         onChange={(e) => setData({
-                            ...data,
-                            name: e.target.value
+                            ...data, name: e.target.value
                         })}>
                     </input>
                     <button className="botonAcceso"
